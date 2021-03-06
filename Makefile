@@ -1,8 +1,8 @@
 
 .PHONY: all build-images build-test-images test-images push-images update-version
 
-IMAGE_NAME ?= sdelrio/argocd-sops
-IMAGE_TAG ?= latest
+IMAGE_NAME ?= argocd-sops
+IMAGE_TAG ?= master
 IMAGE_TEST_TAG ?= test
 IMAGE_PREFIX ?= docker.pkg.github.com
 GPR_TEST_TAG ?= build-cache-tests-no-buildkit
