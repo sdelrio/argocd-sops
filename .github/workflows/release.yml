@@ -22,8 +22,8 @@ jobs:
           release_name: Release ${{ github.ref }}
           body: |
             Changes in this this Release
-        draft: false
-        prerelease: false
+          draft: false
+          prerelease: false
 
       - name: Docker login
         run: docker login -u ${{ secrets.DOCKER_USER }} -p ${{ secrets.DOCKER_PASSWORD }}
