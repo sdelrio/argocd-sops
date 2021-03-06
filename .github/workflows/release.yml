@@ -12,6 +12,7 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
+
       - name: Create Release
         id: create_release
         uses: actions/create-release@v1
@@ -27,15 +28,21 @@ jobs:
 
       - name: Docker login
         run: docker login -u ${{ secrets.DOCKER_USER }} -p ${{ secrets.DOCKER_PASSWORD }}
+
       - name: Build
         run: make build-images
+
+      - name: Get docker tag from release
+        id: docker-tag
+        uses: yuya-takeyama/docker-tag-from-github-ref-action@v1
+
       - name: Tags
         run: |
-          docker tag argocd-sops:master ${{ secrets.DOCKER_USER }}/argocd-sops:${{ github.ref }}
+          docker tag argocd-sops:master ${{ secrets.DOCKER_USER }}/argocd-sops:${{ steps.docker-tag.outputs.tag }}
           docker tag argocd-sops:master ${{ secrets.DOCKER_USER }}/argocd-sops:latest
+
       - name: Push
         run: |
-          docker push ${{ secrets.DOCKER_USER }}/argocd-sops:${{ github.ref }}
+          docker push ${{ secrets.DOCKER_USER }}/argocd-sops:${{ steps.docker-tag.outputs.tag }}
           docker push ${{ secrets.DOCKER_USER }}/argocd-sops:latest
-
 
