@@ -1,4 +1,4 @@
-![master status](https://github.com/github/docs/actions/workflows/main.yml/badge.svg)
+![master status](https://github.com/sdelrio/argocd-sops/actions/workflows/main.yml/badge.svg)
 
 # argocd-sops
 
