@@ -1,4 +1,4 @@
-ARG VERSION="v1.7.14"
+ARG VERSION="v1.8.7"
 FROM argoproj/argocd:${VERSION}
 
 ARG SOPS_VERSION="v3.6.1"
